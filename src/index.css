@@ -1,9 +1,17 @@
-@import-normalize; /* bring in normalize.css styles */
+html {
+  --background-section: #243a4d;
+  --background-card-box: #334351;
+  --contact-list: #465c70;
+}
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  color: #fff;
 }
 
 a {
@@ -16,6 +24,20 @@ a:focus {
 
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -28,22 +50,19 @@ svg {
   fill: currentColor;
 }
 
+input {
+  padding: 0;
+  margin: 0;
+}
+
 button {
   display: inline-block;
+  padding: 0;
+  margin: 0;
   border: none;
   cursor: pointer;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+section {
+  margin: 0 auto;
 }

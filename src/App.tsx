@@ -1,10 +1,12 @@
-import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { Search } from './components/Search/Search';
+import { theme } from './theme/theme';
 
 function App() {
   return (
-    <div>
-      <h1>HI</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Search />
+    </ThemeProvider>
   );
 }
 

@@ -1,17 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 html {
   --background-section: #243a4d;
   --background-card-box: #334351;
   --contact-list: #465c70;
 }
 
-* {
-  box-sizing: border-box;
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
-body {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 400;
-  color: #fff;
+* {
+  box-sizing: border-box;
 }
 
 a {

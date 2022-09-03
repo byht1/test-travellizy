@@ -14,6 +14,7 @@ export const theme = {
     xs: '12px',
     s: '14px',
     m: '16px',
+    m20: '20px',
     l: '32px',
     xl: '64px',
   },
@@ -35,8 +36,11 @@ export const theme = {
     round: '50%',
   },
   size: {
+    maxVH: '100vh',
     max: '100%',
     half: '50%',
+    quarter: '25%',
+    bar: '268px',
   },
   shadows: {},
 };

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding-top: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[5]}px;
   padding-bottom: ${p => p.theme.space[4]}px;

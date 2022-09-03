@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { HeaderBox, Input } from './Search.styled';
 
 const KEY_SEARCH = 'search';
 
-export const Search = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [_, setSearchParams] = useSearchParams();
+export const Search: FC = () => {
+  const [searchValue, setSearchValue] = useState(
+    window.localStorage.getItem(KEY_SEARCH) ?? ''
+  );
+  const [_, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
+    if (searchValue) {
+      params(searchValue);
+    }
+
     window.addEventListener('keydown', event => clickEnter(event));
 
     return () => {
@@ -21,12 +27,18 @@ export const Search = () => {
 
     setSearchValue(value);
 
-    const nextParams: string | {} = value !== '' ? { search: value } : {};
-    setSearchParams(nextParams);
+    params(value);
   };
 
+  function params(v: string) {
+    const nextParams: string | {} = v !== '' ? { search: v } : {};
+
+    setSearchParams(nextParams);
+
+    return nextParams;
+  }
+
   function clickEnter(e: KeyboardEvent) {
-    console.log('🚀 ~ searchValue.length', searchValue.length);
     if (e.key !== 'Enter') {
       return;
     }

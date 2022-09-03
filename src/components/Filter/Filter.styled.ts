@@ -10,6 +10,7 @@ export const AsideBox = styled.aside`
   padding-right: ${p => p.theme.space[4]}px;
   padding-bottom: ${p => p.theme.space[5]}px;
   padding-left: ${p => p.theme.space[4]}px;
+  overflow-y: auto;
   text-align: left;
 
   background-color: ${p => p.theme.colors.bs};

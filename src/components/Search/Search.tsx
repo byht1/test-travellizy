@@ -4,11 +4,17 @@ import { HeaderBox, Input } from './Search.styled';
 
 const KEY_SEARCH = 'search';
 
-export const Search: FC = () => {
+type Props = {
+  params(): {
+    [key: string]: string;
+  };
+};
+
+export const Search: FC<Props> = ({ params: par }) => {
   const [searchValue, setSearchValue] = useState(
     window.localStorage.getItem(KEY_SEARCH) ?? ''
   );
-  const [_, setSearchParams] = useSearchParams('');
+  const [searchParams, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
     if (searchValue) {
@@ -31,7 +37,14 @@ export const Search: FC = () => {
   };
 
   function params(v: string) {
-    const nextParams: string | {} = v !== '' ? { search: v } : {};
+    const newParams = par();
+    let nextParams: { name: string } | {} = {};
+
+    if (newParams['search']) {
+      nextParams = v !== '' ? { ...newParams, search: v } : {};
+    } else {
+      nextParams = v !== '' ? { search: v } : {};
+    }
 
     setSearchParams(nextParams);
 

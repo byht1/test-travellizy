@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { FC } from 'react';
 import { HeaderBox, Input, Warning } from './Search.styled';
+import { useSearch } from './../../hook/useSearch';
 
 const KEY_SEARCH = 'search';
 
@@ -11,38 +11,7 @@ type Props = {
 };
 
 export const Search: FC<Props> = ({ params: par }) => {
-  const [searchValue, setSearchValue] = useState('');
-  const [_, setSearchParams] = useSearchParams('');
-
-  useEffect(() => {
-    if (searchValue) {
-      params(searchValue);
-    }
-  }, [searchValue]);
-
-  const eventSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    setSearchValue(value);
-
-    params(value);
-  };
-
-  function params(v: string) {
-    const newParams = par();
-    let nextParams: { name: string } | {} = {};
-
-    if (newParams['search']) {
-      nextParams = v !== '' ? { ...newParams, search: v } : {};
-    } else {
-      nextParams = v !== '' ? { search: v } : {};
-    }
-
-    setSearchParams(nextParams);
-
-    return nextParams;
-  }
-
+  const { eventSearch, searchValue } = useSearch(par);
   return (
     <HeaderBox>
       <Input

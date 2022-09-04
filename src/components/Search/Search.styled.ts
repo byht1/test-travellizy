@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
-  position: relative;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +13,7 @@ export const HeaderBox = styled.header`
   background-color: ${p => p.theme.colors.bcb};
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -34,10 +33,6 @@ export const Input = styled.input`
 
 export const Warning = styled.p`
   display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
 
   width: 200px;
 

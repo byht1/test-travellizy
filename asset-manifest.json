@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/test-travellizy/static/css/main.dcf8edc4.css",
-    "main.js": "/test-travellizy/static/js/main.7634897a.js",
+    "main.js": "/test-travellizy/static/js/main.ae983fdf.js",
     "static/js/787.a636ec36.chunk.js": "/test-travellizy/static/js/787.a636ec36.chunk.js",
     "index.html": "/test-travellizy/index.html",
     "main.dcf8edc4.css.map": "/test-travellizy/static/css/main.dcf8edc4.css.map",
-    "main.7634897a.js.map": "/test-travellizy/static/js/main.7634897a.js.map",
+    "main.ae983fdf.js.map": "/test-travellizy/static/js/main.ae983fdf.js.map",
     "787.a636ec36.chunk.js.map": "/test-travellizy/static/js/787.a636ec36.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dcf8edc4.css",
-    "static/js/main.7634897a.js"
+    "static/js/main.ae983fdf.js"
   ]
 }

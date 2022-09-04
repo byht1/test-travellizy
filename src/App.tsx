@@ -17,13 +17,17 @@ const stateFilter = {
   matrix_type: [],
   relation_parties: [],
   built_speaker: [],
+  prise: {
+    min: 10000000000000000,
+    max: 0,
+  },
 };
 
 function App() {
-  const [data, setData] = useState(jsonData);
+  const [data] = useState(jsonData);
   const [renderData, setRenderData] = useState<Product[]>([]);
   const [filterName, setFilterName] = useState<Filters>(stateFilter);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const newParams = params();
@@ -71,7 +75,6 @@ function App() {
         );
       }
       if (newParams.builtSpeaker) {
-        console.log('🚀 ~ builtSpeaker', newParams.builtSpeaker);
         const builtSpeakerFilter = newParams.builtSpeaker;
         filter = filter.filter(({ built_speaker }) => {
           if (builtSpeakerFilter === 'В наявності' && built_speaker) {
@@ -83,6 +86,29 @@ function App() {
           }
         });
       }
+
+      const prise = () => {
+        if (newParams.min || newParams.max) {
+          const minFilter = Number(newParams.min);
+          const maxFilter = Number(newParams.max);
+          if (newParams.min && newParams.max) {
+            filter = filter.filter(
+              ({ prise }) => prise >= minFilter && prise <= maxFilter
+            );
+            return;
+          }
+
+          if (newParams.min) {
+            filter = filter.filter(({ prise }) => prise >= minFilter);
+            return;
+          } else {
+            filter = filter.filter(({ prise }) => prise <= maxFilter);
+            return;
+          }
+        }
+      };
+
+      prise();
     }
     const products: any = filter.map(x => {
       return Object.fromEntries(
@@ -131,6 +157,14 @@ function App() {
           acc.built_speaker.push(x.built_speaker);
         }
 
+        if (x.prise < acc.prise.min) {
+          acc.prise.min = x.prise;
+        }
+
+        if (x.prise > acc.prise.max) {
+          acc.prise.max = x.prise;
+        }
+
         return acc;
       },
       {
@@ -141,8 +175,22 @@ function App() {
         matrix_type: [],
         relation_parties: [],
         built_speaker: [],
+        prise: {
+          min: 10000000000000000,
+          max: 0,
+        },
       } as Filters
     );
+
+    filter.diagonal.sort((a, b) => Number(a) - Number(b));
+    filter.refresh_rate.sort((a, b) => Number(a) - Number(b));
+    filter.screen_extension.sort(
+      (a, b) => Number(a.slice(0, 4)) - Number(b.slice(0, 4))
+    );
+    filter.relation_parties.sort(
+      (a, b) => Number(a.slice(0, 2)) - Number(b.slice(0, 2))
+    );
+
     setFilterName(filter);
   }, []);
 

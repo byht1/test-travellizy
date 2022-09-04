@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Filters } from '../../type/typeData';
 import { AsideBox } from './Filter.styled';
 import { FilterBox } from './FilterBox/FilterBox';
+import { FIlterPrice } from './FIlterPrice/FIlterPrice';
 
 type Props = {
   data: Filters;
@@ -19,11 +20,13 @@ export const Filter: FC<Props> = ({
     matrix_type: matrixType,
     relation_parties: relationParties,
     built_speaker: builtSpeaker,
+    prise,
   },
   params,
 }) => {
   return (
     <AsideBox>
+      <FIlterPrice prise={prise} params={params} />
       <FilterBox params={params} name="brand" data={brand}>
         По бренду
       </FilterBox>

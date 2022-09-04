@@ -13,13 +13,13 @@ export const Products: FC<Props> = ({ data }) => {
       {data.map(({ id, brand, photo, screen_extension, prise }) => {
         return (
           <Elements key={id}>
-            <img src={photo} alt={'Монитор: ' + brand} />
+            <img src={photo} alt={'Монітор: ' + brand} />
             <Box p={4}>
               <Text>
-                Монитор: {brand}, {screen_extension}
+                Монітор: {brand}, {screen_extension}
               </Text>
-              <Text>Цена: {prise}</Text>
-              <Button>Купить</Button>
+              <Text>Ціна: {prise}</Text>
+              <Button>Купити</Button>
             </Box>
           </Elements>
         );

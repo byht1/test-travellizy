@@ -49,8 +49,6 @@ export const FilterName: FC<Props> = ({ name, value, params }) => {
       nextParams = checked ? { ...newParams, [name]: value } : {};
     }
 
-    console.log('🚀 ~ nextParams', nextParams);
-
     setSearchParams(nextParams);
 
     setPosition(prev => !prev);

@@ -19,6 +19,10 @@ export type Filters = {
   matrix_type: string[];
   relation_parties: string[];
   built_speaker: boolean[];
+  prise: {
+    min: number;
+    max: number;
+  };
 };
 
 export type Product = {

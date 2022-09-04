@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { HeaderBox, Input } from './Search.styled';
+import { HeaderBox, Input, Warning } from './Search.styled';
 
 const KEY_SEARCH = 'search';
 
@@ -52,6 +52,7 @@ export const Search: FC<Props> = ({ params: par }) => {
         value={searchValue}
         placeholder="Монітор ASUS"
       />
+      <Warning>Ці данні не несуть ніякох цінності</Warning>
     </HeaderBox>
   );
 };

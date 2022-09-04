@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
+  padding-left: ${p => p.theme.space[5]}px;
   display: flex;
   align-items: center;
 `;

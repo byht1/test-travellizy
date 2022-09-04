@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
+  position: relative;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,4 +30,24 @@ export const Input = styled.input`
   border-radius: ${p => p.theme.radii.normal};
 
   font-size: ${p => p.theme.fontSizes.m};
+`;
+
+export const Warning = styled.p`
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+
+  width: 200px;
+
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+
+  color: red;
+
+  @media screen and (max-width: 899.9px) {
+    display: none;
+  }
 `;

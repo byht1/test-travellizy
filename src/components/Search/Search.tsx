@@ -21,7 +21,7 @@ export const Search: FC<Props> = ({ params: par }) => {
         type="text"
         name="search"
         value={searchValue}
-        placeholder="Монітор ASUS"
+        placeholder="ASUS"
       />
       <Warning>Ці данні не несуть ніякох цінності</Warning>
     </HeaderBox>

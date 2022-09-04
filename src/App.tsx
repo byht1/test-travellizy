@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Box } from './components/Box/Box';
 import { Filter } from './components/Filter/Filter';
@@ -28,8 +28,7 @@ function App() {
   const [renderData, setRenderData] = useState<Product[]>([]);
   const [filterName, setFilterName] = useState<Filters>(stateFilter);
   const [searchParams] = useSearchParams();
-
-  useEffect(() => {
+  const filterMemo = useMemo(() => {
     const newParams = params();
 
     let filter: ServerData[] = data;
@@ -117,8 +116,13 @@ function App() {
         )
       );
     });
-    setRenderData(products);
+
+    return products;
   }, [searchParams]);
+
+  useEffect(() => {
+    setRenderData(filterMemo);
+  }, [filterMemo]);
 
   useEffect(() => {
     const filter = data.reduce(
@@ -194,16 +198,16 @@ function App() {
     setFilterName(filter);
   }, []);
 
-  const params = (): {
+  function params(): {
     [key: string]: string;
-  } => {
+  } {
     const newParams: { [key: string]: string } = {};
     searchParams.forEach((value: string, key: string) => {
       newParams[key] = value;
     });
 
     return newParams;
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>

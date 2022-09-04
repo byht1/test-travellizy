@@ -16,7 +16,7 @@ export const Products: FC<Props> = ({ data }) => {
             <img src={photo} alt={'Монітор: ' + brand} />
             <Box p={4}>
               <Text>
-                Монітор: {brand}, {screen_extension}
+                Монітор: {brand},<br /> {screen_extension}
               </Text>
               <Text>Ціна: {prise}</Text>
               <Button>Купити</Button>

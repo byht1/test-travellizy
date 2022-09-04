@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Input, Label } from './InputFilter.styled';
 
 type Props = {
   prise: {
@@ -22,19 +23,12 @@ export const InputFilter: FC<Props> = ({
   params,
 }) => {
   const [valuePriseFilter, setValuePriseFilter] = useState(value);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [_, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setValuePriseFilter(value);
     const newParams = params();
 
-    // if (name === 'min') {
-    //   delete newParams['min'];
-    // }
-
-    // if (name === 'max') {
-    //   delete newParams['max'];
-    // }
     delete newParams['min'];
     delete newParams['max'];
     setSearchParams(newParams);
@@ -64,9 +58,9 @@ export const InputFilter: FC<Props> = ({
   }
 
   return (
-    <label>
+    <Label>
       <span>{children}</span>
-      <input
+      <Input
         onChange={e => change(e)}
         type="number"
         name={name}
@@ -75,6 +69,6 @@ export const InputFilter: FC<Props> = ({
         max={prise.max}
         step={10}
       />
-    </label>
+    </Label>
   );
 };

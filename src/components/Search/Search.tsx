@@ -11,21 +11,13 @@ type Props = {
 };
 
 export const Search: FC<Props> = ({ params: par }) => {
-  const [searchValue, setSearchValue] = useState(
-    window.localStorage.getItem(KEY_SEARCH) ?? ''
-  );
-  const [searchParams, setSearchParams] = useSearchParams('');
+  const [searchValue, setSearchValue] = useState('');
+  const [_, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
     if (searchValue) {
       params(searchValue);
     }
-
-    window.addEventListener('keydown', event => clickEnter(event));
-
-    return () => {
-      window.removeEventListener('keydown', event => clickEnter(event));
-    };
   }, [searchValue]);
 
   const eventSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,17 +43,6 @@ export const Search: FC<Props> = ({ params: par }) => {
     return nextParams;
   }
 
-  function clickEnter(e: KeyboardEvent) {
-    if (e.key !== 'Enter') {
-      return;
-    }
-
-    if (searchValue.length < 3) {
-      return;
-    }
-    window.localStorage.setItem(KEY_SEARCH, searchValue);
-  }
-
   return (
     <HeaderBox>
       <Input
@@ -69,6 +50,7 @@ export const Search: FC<Props> = ({ params: par }) => {
         type="text"
         name="search"
         value={searchValue}
+        placeholder="Монітор ASUS"
       />
     </HeaderBox>
   );

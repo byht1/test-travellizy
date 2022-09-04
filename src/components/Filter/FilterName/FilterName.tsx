@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Label } from './FilterName.styled';
+import { Label, Text } from './FilterName.styled';
 import { useSearchParams } from 'react-router-dom';
 
 type Props = {
@@ -63,7 +63,7 @@ export const FilterName: FC<Props> = ({ name, value, params }) => {
         value={value}
         checked={position}
       />
-      <span>{value}</span>
+      <Text>{value}</Text>
     </Label>
   );
 };
